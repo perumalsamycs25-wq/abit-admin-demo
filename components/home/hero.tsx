@@ -8,7 +8,7 @@ import type { HomepageData } from '@/lib/homepage-types'
 import { openAdmissionModal } from '@/components/admission-modal'
 
 export function Hero({ content }: { content?: HomepageData['hero'] }) {
-  const bannerItems = (content?.banners || []).map((banner) => ({ src: banner.src || banner.imageUrl || '', alt: banner.alt || banner.title || 'ABIT campus' })).filter((banner) => banner.src)
+  const bannerItems = (content?.banners || []).map((banner) => ({ src: banner.src || '', alt: banner.alt || banner.title || 'ABIT campus', title: banner.title, description: banner.description })).filter((banner) => banner.src)
   const announcements = content?.marqueeItems || []
   const [activeBanner, setActiveBanner] = useState(0)
   useEffect(() => {
@@ -53,24 +53,24 @@ export function Hero({ content }: { content?: HomepageData['hero'] }) {
             alt={banner.alt || 'ABIT campus'}
             fill
             priority={index === 0}
-            className={`object-cover object-center transition-opacity duration-1000 ${
-              activeBanner === index ? 'opacity-45' : 'opacity-0'
+            className={`object-cover object-center transition-[opacity,transform] duration-1000 ease-out motion-reduce:transition-none ${
+              activeBanner === index ? 'scale-100 opacity-45' : 'scale-105 opacity-0'
             }`}
             sizes="100vw"
           />
         ))}
         <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/85 to-navy-deep/40" aria-hidden />
         <div className="relative mx-auto grid max-w-7xl gap-8 px-6 py-20 sm:py-28 lg:py-32">
-          <div className="max-w-2xl animate-fade-up">
+          <div key={activeBanner} className="max-w-2xl animate-fade-up motion-reduce:animate-none">
             <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-gold">
               <Award className="size-3.5" aria-hidden />
               Estd. 2008 · AICTE · JNTUH · NAAC B++
             </span>
             <h1 className="mt-6 font-heading text-4xl font-extrabold leading-[1.1] text-balance text-primary-foreground sm:text-5xl lg:text-6xl">
-              {content.title}
+              {bannerItems[activeBanner].title || content.title}
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-pretty text-primary-foreground/80">
-              {content.description}
+              {bannerItems[activeBanner].description || content.description}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <button

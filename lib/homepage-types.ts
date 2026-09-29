@@ -7,7 +7,7 @@ export type HomepageItem = {
 }
 
 export type HomepageData = {
-  hero: { banners: Array<{ src: string; title?: string; alt?: string }>; marqueeItems: string[]; title: string; description: string; buttonText: string; buttonUrl?: string }
+  hero: { banners: Array<{ src: string; title?: string; description?: string; alt?: string }>; marqueeItems: string[]; title: string; description: string; buttonText: string; buttonUrl?: string }
   about: { imageUrl: string; title: string; paragraphs: string[]; points: string[]; buttonText?: string; buttonUrl?: string; experienceText?: string }
   statistics: Array<{ value: string; label: string }>
   admissions: HomepageItem[]

@@ -8,7 +8,18 @@ export const STATIC_HOMEPAGE: HomepageData = {
     marqueeItems: ['Admissions Open 2026-27', 'Sankranthi Celebrations', 'Discover the world of possibility with ANUBOSE'],
     banners: [
       { src: '/ABIT_IMAGES/bannerp2.jpg', alt: 'ABIT students learning together' },
-      { src: '/ABIT_IMAGES/banner01.webp', alt: 'ABIT students in the laboratory' },
+      {
+        src: '/ABIT_IMAGES/banner01.webp',
+        title: 'Hands-On Electronics Learning',
+        description: "Students put classroom concepts into practice using equipment in ABIT's electronics laboratory.",
+        alt: 'ABIT students in the laboratory',
+      },
+      {
+        src: '/ABIT_IMAGES/csd-banner.png',
+        title: 'Computer Science & Engineering',
+        description: 'Explore computing, software development, and emerging technologies at ABIT.',
+        alt: 'Computer Science Department at ABIT',
+      },
     ],
   },
   about: {
